@@ -1,0 +1,113 @@
+#include<iostream>
+using namespace std;
+enum etype { monday, tuesday, wednesday, thursday, friday };
+class date {
+public:
+	int day;
+	int month;
+	int year;
+	etype emp;
+	void setdate() {
+		char temp;
+		cout << "Enter date in this dd/mm/yyyy format:";
+		cin >> day >> temp >> month >> temp >> year;
+		cout << "\nenter the day 1st letter monday(m),tuesday(t),wednesday(w),thursday(h),friday(f)";
+		char type;
+		cin >> type;
+		switch (type) {
+		case 'm': emp = monday; break;
+		case 't': emp = tuesday; break;
+		case 'w': emp = wednesday; break;
+		case 'h': emp = thursday; break;
+		case 'f': emp = friday; break;
+		default:cout << "invalid";
+		}
+	}
+	void getdate();
+};
+void date::getdate() {
+	cout << "Date of joining is :";
+	cout << day << "/" << month << "/" << year;
+	cout << "\nDay of joining is:";
+	switch (emp) {
+	case monday:cout << "day of joining is monday:"; break;
+	case tuesday:cout << "day of joining is tueasday:"; break;
+	case wednesday:cout << "day of joining is wednesday:"; break;
+	case thursday:cout << "day of joining is thursday:"; break;
+	case friday:cout << "day of joining is friday:"; break;
+	default:cout << "invalid day";
+
+	}
+}
+class employee {
+private:
+	string name;
+	int id;
+	int salary;
+
+public:
+	void setdata();
+	void getdata();
+};
+void employee::setdata() {
+	cout << "Enter the name:";
+	cin >> name;
+	cout << "\nEnter id:";
+	cin >> id;
+	cout << "\nEnter salary:";
+	cin >> salary;
+}
+void employee::getdata() {
+	cout << "The name is:" << name;
+	cout << "\nId is:" << id;
+	cout << "\nsalary is:" << salary;
+
+}class address {
+private:
+	int house;
+	int street;
+	string city;
+public:
+	void add();
+	void getadd() {
+		cout << "house number:" << house;
+		cout << "\nstreet number:" << street;
+		cout << "\ncity is:" << city;
+		if (city == "lahore" || city == "Lahore") {
+			cout << "\nyou have alowance of 0 rupees";
+		}
+		else { cout << "you have alowance of 500 rupees"; }
+	}
+};
+void address::add() {
+	cout << "enter house number:";
+	cin >> house;
+	cout << "\nEnter street number:";
+	cin >> street;
+	cout << "city:";
+	cin >> city;
+
+}
+int main() {
+	employee p[10];
+	date d1[10];
+	address ad[10];
+	for (int i = 1; i <= 10; i++) {
+		cout << "enter the data of employee " << i << endl;
+		p[i].setdata();
+		ad[i].add();
+		d1[i].setdate();
+	}
+	cout << "displaying the data of employes having date 20/10/2022";
+	for (int j = 1; j <= 10; j++) {
+		if (d1[j].day == 20 && d1[j].month == 10 && d1[j].year == 2022) {
+			int k = 1;
+			cout << "employe data number" << k << endl;
+			p[j].getdata();
+			ad[j].add();
+			d1[j].getdate();
+		}
+	}
+
+	return 0;
+}
